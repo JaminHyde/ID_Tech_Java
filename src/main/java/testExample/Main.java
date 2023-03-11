@@ -8,15 +8,17 @@ import java.util.Scanner;
 
         public static boolean winCheck(String[][] board, int row, int col) {
             int cnt = 0;
-            int maxRow = 6 - row;
-            int maxCol = 7 - col;
-            boolean inRow = true;
-            int colNext = col + 1;
-            int colBack = col - 1;
-            int run = 0;
+           // int maxRow = 6 - row;
+           // int maxCol = 7 - col;
+           // boolean inRow = true;
+           // int colNext = col + 1;
+            //int colBack = col - 1;
+            //int run = 0;
             int r = 0;
             int c = 0;
             String lastMark = board[0][0];
+
+            //Horizantal Check
             for(r = 0; r < 6; r++){
                 for(c = 0; c <6; c++)
                     if(Objects.equals(board[r][c], lastMark)){
@@ -44,6 +46,37 @@ import java.util.Scanner;
                     else{
                         cnt = 1;
                         lastMark = board[r][c];
+                    }
+
+            }
+            //Vertical Check
+            for(r = 0; r < 6; r++){
+                for(c = 0; c <6; c++)
+                    if(Objects.equals(board[c][r], lastMark)){
+                        cnt++;
+                        if(cnt > 3){
+                            System.out.println("You Win");
+                            return true;
+                        }
+                    }
+                    else{
+                        cnt = 1;
+                        lastMark = board[c][r];
+                    }
+
+            }
+            for(r = 0; r < 6; r++){
+                for(c = 0; c <6; c++)
+                    if(Objects.equals(board[c][r], lastMark)){
+                        cnt++;
+                        if(cnt > 3){
+                            System.out.println("You Win");
+                            return true;
+                        }
+                    }
+                    else{
+                        cnt = 1;
+                        lastMark = board[c][r];
                     }
 
             }

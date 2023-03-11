@@ -1,19 +1,17 @@
-package Calculator;
+package Debugging;
 
-// Imports
-import java.util.Locale;
 import java.util.Scanner;
 
-public class Calc {
-
+public class Main {
     //Addition Function
     public static void add(double num1, double num2) {
         double result;
         result = num1 + num2;
         System.out.println(num1 + " + " + num2 + " = " + result);
+
     }
 
-    public static void sub(double num1, double num2){
+    public static void sub(double num1, double num2) {
         double result;
         result = num1 - num2;
         System.out.println(num1 + " - " + num2 + " = " + result);
@@ -34,6 +32,7 @@ public class Calc {
             System.out.println("Choose an operator: +, -, *, or /");
             operator = input.next().charAt(0);
 
+
             // Ask users to enter numbers
             System.out.println("Enter first number");
             number1 = input.nextDouble();
@@ -42,10 +41,10 @@ public class Calc {
             number2 = input.nextDouble();
 
 
-            switch (operator) { //if ( operator
+            switch (operator) {
 
                 // Performs addition between numbers
-                case '+': // == '+
+                case '+':
                     result = number1 + number2;
                     System.out.println(number1 + " + " + number2 + " = " + result);
 
@@ -72,20 +71,21 @@ public class Calc {
                 default:
                     System.out.println("Invalid operator!");
                     break;
+
             }
-            System.out.println("Would you like to perform a new claculation? (y/n)\n");
+            System.out.println("Would you like to perform a new calculation? (y/n)\n");
             char calcTemp = input.next().charAt(0);
-            // or: ||  and: &
+
             if (calcTemp == 'y' || calcTemp == 'Y') {
                 calc = true;
             } else if (calcTemp == 'n' || calcTemp == 'N') {
                 calc = false;
             } else {
-                System.out.println("Not a valid anwser.");
+                System.out.println("Not a valid answer.");
             }
         }
 
         input.close();
+
     }
 }
-

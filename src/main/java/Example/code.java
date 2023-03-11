@@ -1,64 +1,81 @@
 package Example;
 
 //Import Statements
+import java.util.Objects;
+import java.util.Random;
 import java.util.Scanner;
-import java.lang.Math;
 
 
 public class code {
+    public static void winCheck(String[][] board, int row, int col) {
+        System.out.println(" ");
+    }
 
-    // Function that implements the number guessing game
-    public static void
-    guessingNumberGame()
-    {
-        // Scanner Class
-        Scanner sc = new Scanner(System.in);
-
-        // Generate the numbers
-        int number = 1 + (int)(100 * Math.random());
-
-        // Given K trials
-        int K = 5;
-
-        int i, guess;
-
-        System.out.println("A number is chosen" + " between 1 to 100." + "Guess the number" + " within 5 trials.");
-
-        // Iterate over K Trials
-        for (i = 0; i < K; i++) {
-
-            System.out.println("Guess the number:");
-
-            // Take input for guessing
-            guess = sc.nextInt();
-
-            // If the number is guessed
-            if (number == guess) {
-                System.out.println("Congratulations!" + " You guessed the number.");
-                break;
+    public static void display(String[][] board){
+        for(int r = 0; r < 6; r ++) {
+            for (int c = 0; c < 7; c++) {
+                System.out.print(board[r][c] + " ");
             }
-            else if (number > guess
-                    && i != K - 1) {
-                System.out.println("The number is " + "greater than " + guess);
-            }
-            else if (number < guess
-                    && i != K - 1) {
-                System.out.println("The number is" + " less than " + guess);
-            }
-        }
-
-        if (i == K) {
-            System.out.println("You have exhausted" + " K trials.");
-
-            System.out.println("The number was " + number);
+            System.out.println("\n");
         }
     }
 
-    // Driver Code
-    public static void main(String arg[])
-    {
+    public static void main(String[] args) {
+        //board
+        String[][] board = new String[6][7];
+        //random
+        Random rand = new Random();
+        Scanner input = new Scanner(System.in);
+        int coord1;
+        int coord2;
+        int turn = 1;
+        String fill;
+        boolean game = true;
+        for(int r = 0; r < 6; r ++){
+            for(int c = 0; c < 7; c++){
+                fill = r + "," + c;
+                board[r][c] = fill;
+            }
+        }
+        while(game){
+            System.out.println("Where would you like to move?");
+            display(board);
+            coord1 = input.nextInt();
+            coord2 = input.nextInt();
+            if(turn == 1) {
+                board[coord1][coord2] = " X ";
+                turn = 2;
+            }
+            else{
+                board[coord1][coord2] = " O ";
+                turn = 1;
+            }
 
-        // Function Call
-        guessingNumberGame();
+
+          //  if (winCheck(board, coord1, coord2)){
+               // display(board);
+               // game = false;
+          //  }
+        }
+
+
+             /*
+            for(int r = 0; r < 6; r ++){
+                for(int c = 0; c < 7; c++){
+                    move = rand.nextInt(100);
+
+                    if (move < 50){
+                        board[r][c] = "X";
+                    }
+                    else{
+                        board[r][c] = "O";
+                    }
+                }
+            }
+            /*
+              */
+
+
+
     }
 }
